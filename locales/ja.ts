@@ -21,4 +21,7 @@ export const JaTexts = {
   sharetitle: "画像をシェア",
   shareText: "目デカアプリで目を大きくしたよ",
   changeImageFirst: "先に目デカ画像を作成してください。",
+  sample: "様々な事例の紹介",
+  sampleDesc: "以下の画像のように目を大きくすることができます",
+  try: "目デカアプリを試す",
 };

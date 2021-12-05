@@ -22,4 +22,7 @@ export const EnTexts = {
   sharetitle: "Share your image",
   shareText: "Make my eyes bigger!",
   changeImageFirst: "Please convert your photo first.",
+  sample: "Examples",
+  sampleDesc: "Your eyes will be bigger as follows..",
+  try: "Try Eye Bigger",
 };

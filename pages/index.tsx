@@ -7,31 +7,19 @@ import {
   Image,
   Flex,
   Text,
-  Container,
-  Select,
-  Slider,
-  SliderTrack,
-  SliderFilledTrack,
   RadioGroup,
   Stack,
   Spinner,
   Radio,
 } from "@chakra-ui/react";
-import Tite from "../components/Title";
+import Title from "../components/Title";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import CommonButton from "../components/CommonButton";
 import ShareModal from "../components/ShareModal";
-import { FiUploadCloud, FiDownloadCloud } from "react-icons/fi";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaCloudDownloadAlt,
-  FaLongArrowAltRight,
-  FaShareAlt,
-} from "react-icons/fa";
+import { FiUploadCloud } from "react-icons/fi";
+import { FaFacebookF, FaTwitter, FaCloudDownloadAlt } from "react-icons/fa";
 import { MdOutlineChangeCircle } from "react-icons/md";
-import useMove from "../hooks/useMove";
 import { IconContext } from "react-icons";
 import useTranlate from "../hooks/useTranslate";
 import { useRef, useState } from "react";
@@ -40,6 +28,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import useModal from "../hooks/useModal";
 import Head from "next/head";
+import Samples from "../components/Samples";
 
 export default function Home() {
   const inputImageRef = useRef<HTMLInputElement>(null);
@@ -175,8 +164,9 @@ export default function Home() {
         />
       </Head>
       <Hero />
+      <Samples />
       <Center>
-        <Tite id={"start"}>{t.selectPhoto}</Tite>
+        <Title id={"start"}>{t.try}</Title>
       </Center>
       <Flex
         mt={10}

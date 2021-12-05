@@ -1,4 +1,4 @@
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Flex, Image } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
@@ -13,11 +13,21 @@ const Footer = () => {
     >
       <Flex
         justifyContent="space-between"
+        alignItems="center"
         flexDirection={{ md: "row", base: "column" }}
       >
         <Text fontSize="sm">
           &copy; {new Date().getFullYear()} Eye Bigger All rights reserved.
         </Text>
+        <a href="https://www.buymeacoffee.com/yuikoito" target="_blank">
+          <Image
+            src={"/images/buyMeACoffee.svg"}
+            alt={"buy"}
+            borderRadius={"xl"}
+            h={"60px"}
+            cursor="pointer"
+          />
+        </a>
       </Flex>
     </Box>
   );

@@ -21,14 +21,24 @@ import Tite from "../components/Title";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import CommonButton from "../components/CommonButton";
+import ShareModal from "../components/ShareModal";
 import { FiUploadCloud, FiDownloadCloud } from "react-icons/fi";
-import { FaRegMehRollingEyes } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaCloudDownloadAlt,
+  FaLongArrowAltRight,
+  FaShareAlt,
+} from "react-icons/fa";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import useMove from "../hooks/useMove";
+import { IconContext } from "react-icons";
 import useTranlate from "../hooks/useTranslate";
 import { useRef, useState } from "react";
 import resizeImage from "../libs/resizeImage";
 import axios from "axios";
+import { useRouter } from "next/router";
+import useModal from "../hooks/useModal";
 
 export default function Home() {
   const inputImageRef = useRef<HTMLInputElement>(null);
@@ -36,8 +46,13 @@ export default function Home() {
   const [isLoad, setIsLoad] = useState<boolean>(false);
   const [image, setImage] = useState<string>();
   const [base64, setBase64] = useState<string>();
-  const [chagedImage, setChangedImage] = useState<string>();
+  const { locale } = useRouter();
+  const [changedImage, setChangedImage] = useState<string>();
   const [magni, setMagni] = useState<number>(1.4);
+  const [isShareLoading, setIsShareLoading] = useState<boolean>(false);
+  const [uuid, setUuid] = useState<string>();
+  const [shareUrl, setShareUrl] = useState<string>();
+  const { openModal, closeModal, isOpenModal, openModalType } = useModal();
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile = e.target.files[0];
     const imageUrl = URL.createObjectURL(imageFile);
@@ -66,6 +81,49 @@ export default function Home() {
     );
     setIsLoad(false);
     setChangedImage(`data:image/png;base64,${response.data.img}`);
+  };
+
+  // uuid の発行
+  const generateUuid = () => {
+    let chars = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".split("");
+    for (let i = 0, len = chars.length; i < len; i++) {
+      switch (chars[i]) {
+        case "x":
+          chars[i] = Math.floor(Math.random() * 16).toString(16);
+          break;
+        case "y":
+          chars[i] = (Math.floor(Math.random() * 4) + 8).toString(16);
+          break;
+      }
+    }
+    return chars.join("");
+  };
+
+  const openModalHandler = async (shareType: "TWITTER" | "FACEBOOK") => {
+    openModal(shareType);
+    setIsShareLoading(true);
+    const uuid = generateUuid();
+    await axios.post(
+      `${process.env.NEXT_PUBLIC_AWS_API_ENDPOINT}/postogpimg`,
+      JSON.stringify({
+        uuid: uuid,
+        ogpimg: changedImage,
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    setUuid(uuid);
+    window.history.pushState(null, null, `/${locale}/share/${uuid}`);
+    setShareUrl(`${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/share/${uuid}`);
+    setIsShareLoading(false);
+  };
+
+  const closeModalHandler = () => {
+    window.history.pushState(null, null, `/${locale}`);
+    closeModal();
   };
 
   return (
@@ -139,22 +197,83 @@ export default function Home() {
           </Box>
           <Box mt={5}>
             <Text fontSize={{ base: "2xl", lg: "3xl" }}>{t.saveAndShare}</Text>
-            {/* <Text my={"3"} color={"gray.500"}>
-              先に作って
-            </Text> */}
-            {/* <CommonButton
-              leftIcon={<Icon as={FiUploadCloud} />}
-              onClick={uploadImage}
-            >
-            　{t.save}
-            </CommonButton> */}
+            {!changedImage && (
+              <Text my={"3"} color={"gray.500"}>
+                {t.changeImageFirst}
+              </Text>
+            )}
+            {changedImage && (
+              <Grid
+                mt={4}
+                templateColumns="repeat(3, 1fr)"
+                w={{ base: "100%", md: "80%", lg: "60%" }}
+              >
+                <Flex flexDirection="column" alignItems="center">
+                  <Center
+                    bgColor="#385897"
+                    color="white"
+                    boxSize="50px"
+                    cursor="pointer"
+                    borderRadius="full"
+                    onClick={() => openModalHandler("FACEBOOK")}
+                  >
+                    <IconContext.Provider value={{ size: "30px" }}>
+                      <FaFacebookF />
+                    </IconContext.Provider>
+                  </Center>
+                  <Text size="base" color="gray.700">
+                    facebook
+                  </Text>
+                </Flex>
+                <Flex flexDirection="column" alignItems="center">
+                  <Center
+                    bgColor="#1DA1F1"
+                    color="white"
+                    cursor="pointer"
+                    boxSize="50px"
+                    borderRadius="full"
+                    onClick={() => openModalHandler("TWITTER")}
+                  >
+                    <IconContext.Provider value={{ size: "30px" }}>
+                      <FaTwitter />
+                    </IconContext.Provider>
+                  </Center>
+                  <Text size="base" color="gray.700">
+                    twitter
+                  </Text>
+                </Flex>
+                <Flex flexDirection="column" alignItems="center">
+                  <Center
+                    bgColor="tomato"
+                    color="white"
+                    cursor="pointer"
+                    boxSize="50px"
+                    borderRadius="full"
+                    as="a"
+                    download={`${new Date().getTime()}.png`}
+                    href={changedImage}
+                  >
+                    <IconContext.Provider value={{ size: "30px" }}>
+                      <FaCloudDownloadAlt />
+                    </IconContext.Provider>
+                  </Center>
+                  <Text size="base" color="gray.700">
+                    download
+                  </Text>
+                </Flex>
+              </Grid>
+            )}
           </Box>
         </Box>
         <Center w={{ base: "100%", md: "50%" }} position="relative" px={5}>
           <Image
             w="100%"
             src={
-              chagedImage ? chagedImage : image ? image : "/images/default.png"
+              changedImage
+                ? changedImage
+                : image
+                ? image
+                : "/images/default.png"
             }
             alt={"default"}
             opacity={isLoad ? 0.5 : 1}
@@ -171,6 +290,16 @@ export default function Home() {
           )}
         </Center>
       </Flex>
+      {isOpenModal && (
+        <ShareModal
+          shareUrl={shareUrl}
+          uuid={uuid}
+          isOpenModal={isOpenModal}
+          onClose={closeModalHandler}
+          modalType={openModalType}
+          isLoading={isShareLoading}
+        />
+      )}
       <Footer />
     </>
   );

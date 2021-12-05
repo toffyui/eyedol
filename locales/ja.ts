@@ -7,7 +7,7 @@ export const JaTexts = {
   selectPhoto: "画像を選択する",
   uploadPicture: "画像をアップロード",
   selectPhotoFromLibrary: "ライブラリから画像を選択",
-  note: "顔がうつっている画像を選択してください",
+  note: "顔がうつっている画像を選択してください。",
   selectPhotoFirst: "まずは画像を選択してください。",
   changeMagni: "目の大きさを選ぶ",
   changeImage: "目を大きくする",
@@ -20,4 +20,5 @@ export const JaTexts = {
   saveAndShare: "保存やシェア",
   sharetitle: "画像をシェア",
   shareText: "目デカアプリで目を大きくしたよ",
+  changeImageFirst: "先に目デカ画像を作成してください。",
 };

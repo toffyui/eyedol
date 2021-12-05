@@ -19,7 +19,6 @@ import useTranlate from "../hooks/useTranslate";
 
 type Props = {
   shareUrl: string;
-  model: string;
   uuid: string;
   isOpenModal: boolean;
   onClose: () => void;
@@ -29,14 +28,12 @@ type Props = {
 
 const ShareModal = ({
   shareUrl,
-  model,
   uuid,
   isOpenModal,
   onClose,
   modalType,
   isLoading,
 }: Props) => {
-  const { locale } = useRouter();
   const t = useTranlate();
   const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const snsUrl = () => {
@@ -70,7 +67,7 @@ const ShareModal = ({
             <Image
               src={
                 !isLoading &&
-                `${process.env.NEXT_PUBLIC_BASE_URL}/api/ogp?la=${locale}&model=${model}&uuid=${uuid}`
+                `${process.env.NEXT_PUBLIC_AWS_IMAGE_URL}/${uuid}.jpg`
               }
               fallbackSrc="/loading.gif"
               alt="image"

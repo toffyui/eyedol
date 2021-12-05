@@ -21,4 +21,5 @@ export const EnTexts = {
   saveAndShare: "Save, Share and Enjoy",
   sharetitle: "Share your image",
   shareText: "Make my eyes bigger!",
+  changeImageFirst: "Please convert your photo first.",
 };

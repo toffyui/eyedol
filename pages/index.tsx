@@ -39,6 +39,7 @@ import resizeImage from "../libs/resizeImage";
 import axios from "axios";
 import { useRouter } from "next/router";
 import useModal from "../hooks/useModal";
+import Head from "next/head";
 
 export default function Home() {
   const inputImageRef = useRef<HTMLInputElement>(null);
@@ -128,6 +129,51 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>{t.title}</title>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_BASE_URL} />
+        <meta name="description" content={t.description} />
+        <meta property="og:title" content={t.title} />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content={t.description} />
+        <meta property="og:site_name" content={t.title} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/images/favicon.jpg"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/images/favicon.jpg"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/images/favicon.jpg"
+        />
+        <meta name="twitter:site" content="@yui_active" />
+        <meta name="twitter:creator" content="@yui_active" />
+        <meta
+          property="og:image"
+          key="ogImage"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/images/OGP.jpg`}
+        />
+        <meta
+          name="twitter:card"
+          key="twitterCard"
+          content="summary_large_image"
+        />
+        <meta
+          name="twitter:image"
+          key="twitterImage"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/images/OGP.jpg`}
+        />
+      </Head>
       <Hero />
       <Center>
         <Tite id={"start"}>{t.selectPhoto}</Tite>

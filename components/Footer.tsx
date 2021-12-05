@@ -7,7 +7,8 @@ const Footer = () => {
       role="contentinfo"
       mx="auto"
       maxW="7xl"
-      py="12"
+      pt="20"
+      pb="12"
       px={{ base: "4", md: "8" }}
     >
       <Flex

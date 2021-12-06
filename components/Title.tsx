@@ -11,7 +11,7 @@ export default function Title({ children, id }: Props) {
     <Box w="full" textAlign={"center"} id={id ? id : ""}>
       <Stack display={"inline-block"} mt={{ base: 3, lg: 10 }}>
         <Text
-          fontSize={{ base: "3xl", lg: "4xl" }}
+          fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
           fontWeight={500}
           as={"h3"}
           position={"relative"}

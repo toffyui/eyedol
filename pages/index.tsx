@@ -45,6 +45,7 @@ export default function Home() {
   const { openModal, closeModal, isOpenModal, openModalType } = useModal();
   const handleFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const imageFile = e.target.files[0];
+    if (!imageFile) return;
     const imageUrl = URL.createObjectURL(imageFile);
     setImage(imageUrl);
     let imgToBase64 = await resizeImage(imageFile, 1000, 1000);
@@ -52,6 +53,7 @@ export default function Home() {
     setBase64(imgToBase64);
   };
   const uploadImage = () => {
+    setChangedImage(null);
     inputImageRef.current.click();
   };
 
@@ -169,17 +171,17 @@ export default function Home() {
         <Title id={"start"}>{t.try}</Title>
       </Center>
       <Flex
-        mt={10}
+        mt={{ base: 5, med: 8, lg: 10 }}
         maxW={"5xl"}
         mx={"auto"}
         flexDirection={{ base: "column", md: "row" }}
       >
         <Box w={{ base: "100%", md: "50%" }} px={5}>
           <Box>
-            <Text fontSize={{ base: "2xl", lg: "3xl" }}>
+            <Text fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}>
               {t.selectPhotoFromLibrary}
             </Text>
-            <Text my={"3"} color={"gray.500"}>
+            <Text my={{ base: 1, md: 2, lg: 3 }} color={"gray.500"}>
               {t.note}
             </Text>
             <CommonButton
@@ -200,9 +202,11 @@ export default function Home() {
             </CommonButton>
           </Box>
           <Box mt={5}>
-            <Text fontSize={{ base: "2xl", lg: "3xl" }}>{t.changeMagni}</Text>
+            <Text fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}>
+              {t.changeMagni}
+            </Text>
             {!image && (
-              <Text my={"3"} color={"gray.500"}>
+              <Text my={{ base: 1, md: 2, lg: 3 }} color={"gray.500"}>
                 {t.selectPhotoFirst}
               </Text>
             )}
@@ -232,9 +236,11 @@ export default function Home() {
             )}
           </Box>
           <Box mt={5}>
-            <Text fontSize={{ base: "2xl", lg: "3xl" }}>{t.saveAndShare}</Text>
+            <Text fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}>
+              {t.saveAndShare}
+            </Text>
             {!changedImage && (
-              <Text my={"3"} color={"gray.500"}>
+              <Text my={{ base: 1, md: 2, lg: 3 }} color={"gray.500"}>
                 {t.changeImageFirst}
               </Text>
             )}

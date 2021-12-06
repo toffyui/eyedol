@@ -171,7 +171,7 @@ export default function Home() {
         <Title id={"start"}>{t.try}</Title>
       </Center>
       <Flex
-        mt={{ base: 5, med: 8, lg: 10 }}
+        mt={{ base: 5, md: 8, lg: 10 }}
         maxW={"5xl"}
         mx={"auto"}
         flexDirection={{ base: "column", md: "row" }}

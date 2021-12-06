@@ -12,7 +12,6 @@ import {
   Box,
   VStack,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { FaFacebook, FaTwitter } from "react-icons/fa";
 import useTranlate from "../hooks/useTranslate";
@@ -37,7 +36,7 @@ const ShareModal = ({
   const t = useTranlate();
   const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const snsUrl = () => {
-    const hash = `#目デカーイ`;
+    const hash = `#${t.title}`;
     const shareText = t.shareText;
     switch (modalType) {
       case "TWITTER":

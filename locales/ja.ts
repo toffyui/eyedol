@@ -19,6 +19,7 @@ export const JaTexts = {
   fifth: "かなり大きく",
   save: "保存",
   saveAndShare: "保存やシェア",
+  hash: "eyedol",
   sharetitle: "画像をシェア",
   shareText: "Eyeドルで目を大きくしたよ",
   changeImageFirst: "先に目デカ画像を作成してください。",

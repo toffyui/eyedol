@@ -36,7 +36,7 @@ const ShareModal = ({
   const t = useTranlate();
   const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const snsUrl = () => {
-    const hash = `#${t.title}`;
+    const hash = `#${t.hash}`;
     const shareText = t.shareText;
     switch (modalType) {
       case "TWITTER":

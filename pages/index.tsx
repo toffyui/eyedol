@@ -99,7 +99,7 @@ export default function Home() {
       `${process.env.NEXT_PUBLIC_AWS_API_ENDPOINT}/postogpimg`,
       JSON.stringify({
         uuid: uuid,
-        ogpimg: changedImage,
+        ogpimg: changedImage.replace(/^data:image\/[a-z]+;base64,/, ""),
       }),
       {
         headers: {

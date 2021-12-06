@@ -1,7 +1,8 @@
 export const JaTexts = {
   title: "目デカアプリ",
   subTitle: "目を簡単に大きくしよう！",
-  description: "もう小さい目に悩まされる人生は終わりだ！目が大きい新しい自分へ",
+  description: "もう小さい目に悩まされる人生は終わりだ！",
+  description2: "目が大きい新しい人生を",
   start: "早速始める",
   selectBackground: "背景画像を選ぶ",
   selectPhoto: "画像を選択する",

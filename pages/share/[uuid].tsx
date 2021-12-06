@@ -66,7 +66,7 @@ const SharePage = ({ uuid }: Props) => {
         <meta
           property="og:image"
           key="ogImage"
-          content={`${process.env.NEXT_PUBLIC_AWS_IMAGE_URL}/${uuid}.jpg`}
+          content={`${process.env.NEXT_PUBLIC_AWS_IMAGE_URL}/ogpimg/${uuid}.jpg`}
         />
         <meta
           name="twitter:card"
@@ -76,7 +76,7 @@ const SharePage = ({ uuid }: Props) => {
         <meta
           name="twitter:image"
           key="twitterImage"
-          content={`${process.env.NEXT_PUBLIC_AWS_IMAGE_URL}/${uuid}.jpg`}
+          content={`${process.env.NEXT_PUBLIC_AWS_IMAGE_URL}/ogpimg/${uuid}.jpg`}
         />
       </Head>
       <Flex alignItems="center" justifyContent="center" h="100vh">

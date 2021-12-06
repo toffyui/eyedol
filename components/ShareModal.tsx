@@ -67,7 +67,7 @@ const ShareModal = ({
             <Image
               src={
                 !isLoading &&
-                `${process.env.NEXT_PUBLIC_AWS_IMAGE_URL}/${uuid}.jpg`
+                `${process.env.NEXT_PUBLIC_AWS_IMAGE_URL}/ogpimg/${uuid}.jpg`
               }
               fallbackSrc="/loading.gif"
               alt="image"

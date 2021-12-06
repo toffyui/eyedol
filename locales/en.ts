@@ -1,8 +1,8 @@
 export const EnTexts = {
   title: "Eye Bigger",
   subTitle: "Make your eyes bigger!",
-  description:
-    "Say good-bye to you, who has small eyes! Get a new life with big eyes.",
+  description: "Say good-bye to you, who has small eyes!",
+  description2: "Get a new life with big eyes.",
   start: "Try Now",
   selectBackground: "Select a background",
   selectPhoto: "Select a photo",

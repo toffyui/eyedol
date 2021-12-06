@@ -36,6 +36,8 @@ export default function Hero() {
           </Heading>
           <Text fontSize={{ base: "md", lg: "lg" }} color={"pink.100"}>
             {t.description}
+            <br />
+            {t.description2}
           </Text>
           <Stack direction={{ base: "column", md: "row" }}>
             <CommonButton onClick={move}> {t.start}</CommonButton>

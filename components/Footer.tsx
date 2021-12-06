@@ -19,7 +19,11 @@ const Footer = () => {
         <Text fontSize="sm">
           &copy; {new Date().getFullYear()} Eye Bigger All rights reserved.
         </Text>
-        <a href="https://www.buymeacoffee.com/yuikoito" target="_blank">
+        <a
+          href="https://www.buymeacoffee.com/yuikoito"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Image
             src={"/images/buyMeACoffee.svg"}
             alt={"buy"}

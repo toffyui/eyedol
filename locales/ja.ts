@@ -1,5 +1,5 @@
 export const JaTexts = {
-  title: "目デカアプリ",
+  title: "目デカーイ",
   subTitle: "目を簡単に大きくしよう！",
   description: "もう小さい目に悩まされる人生は終わりだ！",
   description2: "目が大きい新しい人生を",
@@ -20,9 +20,9 @@ export const JaTexts = {
   save: "保存",
   saveAndShare: "保存やシェア",
   sharetitle: "画像をシェア",
-  shareText: "目デカアプリで目を大きくしたよ",
+  shareText: "#目デカーイで目を大きくしたよ",
   changeImageFirst: "先に目デカ画像を作成してください。",
   sample: "様々な事例の紹介",
   sampleDesc: "以下の画像のように目を大きくすることができます",
-  try: "目デカアプリを試す",
+  try: "目を大きくする",
 };

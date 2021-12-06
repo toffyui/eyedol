@@ -37,13 +37,13 @@ const ShareModal = ({
   const t = useTranlate();
   const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const snsUrl = () => {
-    const hash = `#目デカアプリ`;
+    const hash = `#目デカーイ`;
     const shareText = t.shareText;
     switch (modalType) {
       case "TWITTER":
         return (
           `https://twitter.com/intent/tweet?url=${shareUrl}&text=` +
-          encodeURIComponent(shareText + hash + `\r\n`)
+          encodeURIComponent(shareText + `\n` + hash)
         );
       case "FACEBOOK":
         return `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&t=${shareText}\n${hash}`;

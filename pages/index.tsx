@@ -64,6 +64,7 @@ export default function Home() {
       JSON.stringify({
         myimg: base64,
         magni: magni,
+        bokasi: 10,
       }),
       {
         headers: {

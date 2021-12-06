@@ -1,6 +1,6 @@
 export const JaTexts = {
   title: "Eyeドル",
-  subTitle: "目を簡単に大きくしよう！",
+  subTitle: "目を大きくしてEyeドルになろう",
   description: "もう小さい目に悩まされる人生は終わりだ！",
   description2: "目が大きい新しい人生を",
   start: "早速始める",

@@ -307,9 +307,15 @@ export default function Home() {
             )}
           </Box>
         </Box>
-        <Center w={{ base: "100%", md: "50%" }} position="relative" px={5}>
+        <Box
+          w={{ base: "100%", md: "50%" }}
+          position="relative"
+          px={5}
+          h={"100%"}
+        >
           <Image
             w="100%"
+            h="100%"
             src={
               changedImage
                 ? changedImage
@@ -323,6 +329,11 @@ export default function Home() {
           {isLoad && (
             <Spinner
               position="absolute"
+              top={0}
+              left={0}
+              right={0}
+              bottom={0}
+              m={"auto"}
               thickness="8px"
               speed="0.65s"
               emptyColor="pink.100"
@@ -330,7 +341,7 @@ export default function Home() {
               size="xl"
             />
           )}
-        </Center>
+        </Box>
       </Flex>
       {isOpenModal && (
         <ShareModal
